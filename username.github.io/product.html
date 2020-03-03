@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="product.css">
+</head>
+<body>
+
+
+<ul>
+  <li><a class="active" href="index.html">Home</a></li>
+  <li><a href="Login.html">Login</a></li>
+  <li><a href="contact.html">Contact</a></li>
+  <li><a href="basket.html">Basket</a></li>
+  <li><a href="Register.html">Register</a></li>
+   <li><a href="Product.html">Product</a></li>
+</ul>
+<div class="middlenav">
+  <input type="text" placeholder="Search..">
+</div>
+
+<!-- above is my navigation bar -->
+
+
+
+<div id="header">
+  <img src="Resources/logo.jpg">
+</div>
+
+<div class="columns">
+
+  <div class="column">
+      <div class="thumbnail-container">
+        <img class="drift-demo-trigger" data-zoom="Resources/hoodrichvest.jpg" src="Resources/hoodrichvest.jpg">
+		  <img class="drift-demo-trigger" data-zoom="Resources/hoodrichvt.jpg" src="Resources/hoodrichvt.jpg">
+		    <img class="drift-demo-trigger" data-zoom="Resources/images.jpg" src="Resources/images.jpg">
+      </div>
+  </div>
+
+  <div class="column">
+    <div class="details">
+      <h1>Spark Island Hoodrich vest collabortaion</h1>
+      <p class="price">£59.99</p>
+      <p class="description">A remarkable collecabtraion with Hvest that's naturally soft inside , cozy all over, and fits your every move and very adjustable.</p>
+
+
+
+      <div class="columns">
+
+        <div class="column" id="wishlist-container">
+
+          <button class="button">
+            <span class="icon is-small">
+                <i class="fas fa-heart"></i>
+              </span>
+              <span>More information</span>
+          </button>
+
+        </div>
+
+        <div class="column" id="buy-container">
+
+          <button class="button buy-button">
+            <span class="icon is-small">
+                <i class="fas fa-shopping-bag"></i>
+              </span>
+              <span>purchase below</span>
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <p class="small-text"><span>Standard delivery</span> 2-5 working days</p>
+      <p class="small-text"><span>Next day delivery</span> order before 2pm ($5.79)</p>
+
+    </div>
+  </div>
+
+</div>
+
+<p class="small-text" style=" text-align: center; padding-top: 30px; padding-bottom: 15px;">Zoom plugin: <a href="" target="_blank">Drift</a></p>
+
+
+<script>
+
+new Drift(document.querySelector('.drift-demo-trigger'), {
+  paneContainer: document.querySelector('.details'),
+  inlinePane: 769,
+  inlineOffsetY: -85,
+  containInline: true,
+  hoverBoundingBox: true
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>My Shopping Cart</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="cart.css">
+  <!--<script
+  src="http://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+  <div>
+
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col col-sm-9">
+        <h1>Products</h1>
+        <div class="row">
+          <div class="col col-xs-12 col-md-6 col-lg-4">
+            <div>
+              <img src="Resources/sparkislandhoodie.jpg" width="150px" height="200px">
+            </div>
+
+          <h2>Product Name</h2>
+          <p>Spark Island Hoodie</p>
+          <p>&pound35.99</p>
+          <p><input type="submit" value="Add to cart" class="btn"/></p>
+
+
+
+          </div>
+</div>
+
+
+<!-- above are my clothing images with prices  -->
+
+
+      <div id="calculator">
+      </div>
+      <form>
+            <div id='shipping-form'>
+                <div>
+                    <label>Name</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div>
+                    <label>Address Line 1</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div>
+                    <label>Address Line 2 (Optional)`</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div>
+                    <label>City</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div>
+                    <label>County</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div>
+                    <label>Post Code</label>
+                    <input type="text" class="form-control">
+                </div>
+            <div>
+                <input type="button" value="Submit" id="finish" />
+            </div>
+        </form>
+
+      </div>
+</div>
+
+<script>
+function hideShippingForm() {
+    $('#shipping-form').hide();
+}
+hideShippingForm();
+
+$('.btn').click(function() {
+    let productName = $(this).parent().siblings('p').first().text();
+    let itemPrice = $(this).parent().siblings('p').eq(1).text();
+
+    $('.cart').append('<p><div>');
+    $('.cart').append(productName);;
+    $('.cart').append('<div style="float:right;">');
+    $('.cart').append(itemPrice);
+
+    calculate(itemPrice);
+});
+
+let subTotal = 0;
+let tax = 0;
+let total = 0;
+
+function calculate(itemPrice) {
+    priceInDecimal = itemPrice.slice(1);
+    $('#calculator').empty();
+    $('#calculator').append('<p><div>');
+    subTotal += parseFloat(priceInDecimal);
+    $('#calculator').append("sub total: £" + subTotal.toFixed(2));
+    $('#calculator').append('<p><div>');
+    tax = subTotal*10/100;
+    $('#calculator').append("tax: £" + tax.toFixed(2));
+    $('#calculator').append('<p><div>');
+    total = subTotal + tax;
+    $('#calculator').append("Total: £" + total.toFixed(2));
+
+    $('#calculator').append('<p><input type=button value="Next" id="next" class="test" />');
+
+    $('.test').click(function() {
+        console.log("Order successfully processed");
+        $('#shipping-form').show();
+    });
+}
+
+$('#finish').click(function() {
+    window.alert('Thank you for your order you will recieve an email to confirm when your order will arive!');
+});
+How to use ZIP E
+
+</script>
+
+<!-- above is my cart and basket together -->
+
+
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+<script src="cart.js"></script>
+
+</body>
+</html>
